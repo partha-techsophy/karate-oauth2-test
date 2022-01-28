@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    test {
+        resources {
+            srcDir file('src/test/java')
+            exclude '**/*.java'
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'com.intuit.karate:karate-junit5:1.1.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'net.masterthought:cucumber-reporting:5.6.1'
+}
+
+test {
+    // When running the test task, only run the base Test class which runs all cucumber
+    // tests in parallel.
+    include '**/*TestRunner*'
+    // Pull karate options into the runtime
+    systemProperty "karate.options", System.properties.getProperty("karate.options")
+    // Pull karate options into the JVM
+    systemProperty "karate.env", System.properties.getProperty("karate.env")
+    // Ensure tests are always run
+    outputs.upToDateWhen { false }
+    // attach debugger
+    if (System.getProperty('debug', 'false') == 'true') {
+        jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9009'
+    }
+    useJUnitPlatform()
+}
