@@ -13,10 +13,11 @@ JDK keystort.
 * Click on the certificate on the left of your browser url window
 * Down the public key of the certificate as DER encoded binary file
 * Import the certificate using java keytool command
-
-keytool -import -alias certificatename -keystore 
-‘\Path\to\your\jdk\jre\lib\security\cacerts’ -file path\to\your\exported\certificate\certificatename.cer
-
+```
+keytool -import -alias certificatename -keystore \
+\path\to\your\jdk\jre\lib\security\cacerts -file \
+path\to\your\exported\certificate\certificatename.der
+```
 
 ## Default Output
 Default DEBUG is on. To turn off DEBUG add logback-test.xml file and change 
