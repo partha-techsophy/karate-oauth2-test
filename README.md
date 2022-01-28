@@ -1,4 +1,4 @@
-# Karate example 
+# Karate OAuth2 example 
 This example covers the following
 * Login to OAuth server
 * Fetch JWT Bearer token
