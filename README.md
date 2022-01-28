@@ -6,7 +6,7 @@ This example covers the following
 
 ## Import Certificate
 In case the certificate does not work import the certificate into your 
-JDK keystort. 
+JDK keystore. 
 
 ### How to download the certificate from browser
 * Goto the auth server login page
